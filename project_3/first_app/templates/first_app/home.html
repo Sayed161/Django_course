@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>this is a home page</h2>
+    <h2>Title : {{title}}</h2>
+    <h2>Age : {{age}}</h2>
+
+    {% comment %} condition statement  {% endcomment %}
+    {% if age >= 18 %}
+        <h4> You are Adult </h4>
+    {% elif age >= 12 and age <= 17  %}
+        <h4> You are too young </h4>
+    {% else %}
+        <h4> You are child </h4>
+    {% endif %}
+
+    {% comment %} conditional loop  {% endcomment %}
+    {% for i in course %}
+    <h3>ID : {{i.id}}, Name : {{i.name}} ,fee: {{i.fee}}</h3>
+    {% endfor %}
+</body>
+</html>
