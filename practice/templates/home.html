@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is Home page --- <a href="/">Home</a> </h1> 
+    <h1>Go to About page --- <a href="/prac_app/about/">About</a></h1> 
+    <h1>Go to Contact page  --- <a href="/prac_app/contact/">Contact</a></h1>
+
+    <h1>Teacher Information</h1> 
+    <h3>Length is - {{teacher|length }}</h3>
+    {% for i in teacher %}
+    <p>Name : {{ i.Name }}</p>
+    <p>Expert : {{ i.Expert }}</p>
+    <p>salary : {{ i.salary | add:"200" }}</p>
+    <h1>---------</h1>  
+    {% endfor %}
+    <h1>Student Information</h1><h3>Length is - {{Student|length }}</h3> 
+    {% for i in Student %}
+    
+    <p>Name : {{i.Name | capfirst}} </p>
+    <p>ID : {{i.ID | cut:" "}}</p>
+    <p>class : {{i.class}}</p>
+    <p>section : {{i.section}}</p>
+    <h1>--------</h1>
+    {% endfor %}
+    
+
+
+</body>
+</html>
