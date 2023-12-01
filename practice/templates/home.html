@@ -15,6 +15,7 @@
     <h3>Length is - {{teacher|length }}</h3>
     {% for i in teacher %}
     <p>Name : {{ i.Name }}</p>
+    <p>Name : {{ i.Name }}</p>
     <p>Expert : {{ i.Expert }}</p>
     <p>salary : {{ i.salary | add:"200" }}</p>
     <h1>---------</h1>  
@@ -22,13 +23,18 @@
     <h1>Student Information</h1><h3>Length is - {{Student|length }}</h3> 
     {% for i in Student %}
     
-    <p>Name : {{i.Name | capfirst}} </p>
+    <p>Name : {{i.Name | capfirst | slugify}} </p>
     <p>ID : {{i.ID | cut:" "}}</p>
     <p>class : {{i.class}}</p>
     <p>section : {{i.section}}</p>
     <h1>--------</h1>
     {% endfor %}
-    
+    {% for i in value %}
+    <h2>{{ i.Alpha | first}}</h2>
+    <h2>{{ i.Alpha | last}}</h2>
+    <h2>{{ i.Alpha | linenumbers}}</h2>
+    <h2>{{ i.Alpha | random}}</h2>
+    {% endfor %}
 
 
 </body>

@@ -9,16 +9,18 @@ def home(request):
 
     Teacher = {'Name': 'Bongai', 'Expert': 'Youtube', 'salary': 12350}
 
-    data = {'Student': [{'Name': 'sayed',
+    data = {'Student': [{'Name': 'Sheikh sayed',
                          'ID': 161,
                          'class': 'Ten',
                          'section': 'C'},
-                        {'Name': 'akash',
+                        {'Name': 'akash Ahmed',
                          'ID': 122,
                          'class': 'five',
                          'section': 'A'}
                         ],
-            'teacher': [{'Name': 'Bongai', 'Expert': 'Youtube', 'salary': 12350}, {'Name': 'Chotobhai','Expert': 'Food','salary': 11150}]}
+            'teacher': [{'Name': 'Bongai', 'Expert': 'Youtube', 'salary': 12350}, {'Name': 'Chotobhai','Expert': 'Food','salary': 11150}],
+            'value': [{'Alpha':['a','b','c']}]
+            }
     return render(request, 'home.html', data)
 
 
