@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="bg-black"style="height:91.5vh">
+<div class="container d-grid flex-directon"style="background-color: rgb(255, 187, 0);border-radius:15px">
+    <div class="row"style="margin-top:85px;margin-left:85px;">
+    {% for i in categories %}
+    <div class="col-md-4">
+    <div class="card shadow-lg bg-white-rounded" style="width: 18rem;height:22rem;margin-bottom:55px;">
+        <img src="{{i.strCategoryThumb}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{i.strCategory}}</h5>
+          <p class="card-text">{{i.strCategoryDescription | truncatewords:10}}</p>   
+        </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+  </div>
+{% endblock content %}

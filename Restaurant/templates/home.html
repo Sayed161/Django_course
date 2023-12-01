@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container d-grid flex-directon"style="margin-top:100px;">
+    <div class="row">
+    <div class="col-md-6">
+        <div class="text">
+      <h6><img src="static/Images/emoji.png" style ="width:30px;" alt="emoji">  EASY WAY TO ORDER YOUR FOOD</h6> 
+      <h1>Order Tasty &</h1>
+      <h1>Fresh Food</h1>
+      <h1 class="anytime">anytime</h1>
+      <a href="{% url 'meal' %}"><button type="button" class="btn btn-outline-danger mt-4">Order Now</button></a>
+    </div>
+        </div>
+        <div class="col-md-6">
+            <img src="static/Images/food3.png" alt="food"style = "width:520px;margin-left:40px">
+            </div>
+            <div class="col-md-3">
+            
+                </div>
+      </div>
+    </div>
+    </div>
+{% endblock content %}
+
+
