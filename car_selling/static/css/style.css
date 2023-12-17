@@ -1,0 +1,7 @@
+body{
+    background-repeat: no-repeat;
+    background-position:right;
+    justify-content: center;
+    align-items: center;
+    background:linear-gradient(rgba(0,0,0,0.5), rgba(88, 87, 87, 0.5));
+}

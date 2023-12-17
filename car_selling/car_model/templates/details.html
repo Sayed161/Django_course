@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="col-12";style="">
+    <div class="card m-5"style="height:80vh;background:linear-gradient(rgb(0 0 0)15%, rgb(125, 37, 41, 100%),rgb(0 0 0 / 100%));padding-left:350px;padding-right:350px">
+      <div class="card-body text-light">
+       <img  src="{{cars.image.url}}" alt=""style="width:800px">
+        <h5 class="card-title">Title : {{cars.title}}</h5>
+        <h5 class="card-title">Brand : {{cars.Brand}}</h5>
+        <h5 class="card-title">Price : {{cars.price}}$</h5>
+        <h5 class="card-title">Quantity : {{cars.quantity}}</h5>
+        <p class="card-text">Details : {{cars.details}}</p>
+        {% if user.is_authenticated %}
+        {% if not purchased and cars.quantity > 0 %}
+        <a href="{% url 'buy_car' cars.pk %}" class="btn btn-warning fw-bold"type = "submit">Buy Now</a>
+        {% elif  cars.quantity == 0 %}
+        <a href="" class="btn btn-warning fw-bold"type = "submit">Out of Stock</a>
+        {% endif %}
+
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+ <div class="card m-5 text-light"style="background-color:black">
+    <h3 class="p-3">Total Comments : {{comments|length}}</h3>
+        {% for com in comments %}
+        <div class="card-body border m-3">
+        <h7><b>{{com.name}}</b> {{com.created_on}}</h7>
+        <p class="pt-4">{{com.body}}</p> 
+    </div>
+    {% endfor %}
+</div>
+<div class="card m-5 text-light"style="background:linear-gradient(rgb(0 0 0)15%, rgb(125, 37, 41, 100%),rgb(0 0 0 / 100%))">
+    <div class="card-body ">
+        <form method='post'>
+        <h1>Add Comments</h1>
+        {% csrf_token %}
+        {{comment_form|crispy}}
+        <button class="btn btn-danger ">Comment</button>
+        </form>
+      
+    </div>
+  </div> 
+
+
+{% endblock content %}

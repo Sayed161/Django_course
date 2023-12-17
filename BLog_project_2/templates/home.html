@@ -1,6 +1,19 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+
+<div class="d-flex flex-wrap container pt-5" >
+  <div class="col-6"style="height:59vh">
+    <h1>Welcome to Django Blog</h1>
+    <h5>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet cupiditate ullam non esse est cumque officiis deleniti fuga necessitatibus unde ratione consectetur voluptates voluptatibus cum, ducimus rerum voluptate quasi magni? Fugiat voluptatem molestias omnis? Facilis dignissimos numquam ex voluptates soluta pariatur ab, provident sapiente labore iste necessitatibus adipisci magni animi, illo repellat eligendi cupiditate dolores accusamus minima quidem! Magnam reprehenderit eligendi fugiat, autem iusto nostrum dolor officia quam! Incidunt totam optio necessitatibus aliquid dolores voluptate obcaecati suscipit voluptatem non facere, aperiam enim adipisci quisquam est culpa. Ab soluta corrupti enim officiis repudiandae eveniet pariatur laudantium nisi quis. Nesciunt, quidem sint.
+    </h5>
+  </div>
+  <div class="col-6" style="height:50vh">
+    <img src="{% static './images/blogs.jpg'%}" style="width:96%;height:55vh">
+  </div>
+</div>
 
 <div class="d-flex flex-wrap container pt-5">
   <div class="col-2 bg-body-secondary p-3">

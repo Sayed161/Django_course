@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="profile" style="margin-left:740px;margin-top:50px;">
+<h1 style="font-weight:bold;color:white;">Welcome to your profile</h1>
+<a href="{% url 'edit' %}"class="btn btn-warning"style="margin-left:130px;margin-top:30px;font-weight:bold;">Edit your profile</a>
+</div>
+
+<ul class="container-fluid">
+   
+    <div class="row  gap-5"style="margin-top:50px;">
+        {% for i in purchased %}
+      <div class="card mt-5 " style="width: 430px;">
+        <img src="{{i.products.image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">{{i.products.title}}</h5>
+          <h6 class="card-title">price: {{i.products.price}} $</h6>
+          <h6 class="card-title">Brand : {{i.products.Brand.name}}</h6>
+          <h6 class="card-title">Purchased at  : {{i.purchasedate}}</h6>
+          <h6 class="card-title">Quantity : {{i.quantity_purchased}}</h6>
+          <a href="" class="btn btn-success container">Purchased</a>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+</ul>
+
+
+{% endblock content %}

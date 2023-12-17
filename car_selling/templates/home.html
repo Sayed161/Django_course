@@ -1,0 +1,156 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+  </head>
+  <style>
+    body{
+        background-image: url(static/images/car.jpg);
+        height:100vh;
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position:center;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .section{
+        margin:80px;
+        color:white;
+        text-align:left;
+    }
+    .section h1{
+        font-size:80px;
+    }
+    .section h5{
+        padding-top:30px;
+        padding-bottom:30px;
+        margin-right:1250px;
+    }
+    .button{
+        padding:10px 20px;
+        border-radius:3px;
+        color:black;
+        font-weight:bold;
+        background-color:white;
+        border:none;
+        text-decoration:none;
+        box-shadow:0 4px 8px rgba(0,0,0,0.6);
+    }
+    .section h4{
+        padding-top:180px;
+    }
+    .collection{
+        margin-left:80px;
+        
+        text-align:left;
+    }
+    .collection h1{
+      font-size:50px;
+      font-weight:bold;
+      letter-spacing:6px;
+      word-spacing:13px;
+      padding-top:70px; 
+  }
+  .collection h4{
+    letter-spacing:3px;
+}
+  </style>
+  <body>
+
+    <nav class="navbar navbar-expand-lg container">
+        <div class="container-fluid">
+            <img src="{% static "images/logo.png" %}" style="width:110px">
+          <a class="navbar-brand text-light fw-bold" href="/">Cars Heaven</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              
+            </ul>
+            <div class="d-flex" role="search">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+                <li class="nav-item ">
+                  <a class="nav-link text-light fw-bold" aria-current="page" href="{%url 'home' %}">Home</a>
+                </li>
+                {% if not user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link text-light fw-bold" href="{%url 'register' %}">Register</a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light fw-bold" href="{%url 'login' %}">Login</a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link text-light fw-bold" href="{%url 'profile' %}">Profile</a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light fw-bold" href="{%url 'logout' %}">Logout</a>
+                  </li>
+                  {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <section id='home'>
+        <div class="section">
+        <h1>Deals on Wheels</h1>
+        <h5>Discover 200+ Car Dealer designs on Dribbble. ... Car
+            Dealer Website UI / UX audi auto auto dealer branding
+            car car dealer credit leasing.
+        </h5>
+            <a href="#cars" class="button">View All Models</a>
+
+            <h4>Partnership with</h4>
+<div class="images d-flex gap-5 pt-5">
+ {% for item in data %}
+    <div class="card" style="width: 13rem;background:linear-gradient(rgba(88, 87, 87, 0.5), rgba(88, 87, 87, 0.5));padding:10px">
+      <div class="card-body d-flex">
+        
+       <a href="{%url 'brand' item.slug %}"style="text-decoration:none;" id="{{item.id}}"> <img src="{{item.brand_image.url}}" alt="" style="width:70px;margin-left:30px;" for="{{item.id}}">
+        <h2 class="card-title text-light ms-4 mt-3" for="{{item.id}}">{{item.name}}</h2></a>
+                     </div>
+                </div>
+                {% endfor %}
+
+              
+            </div>
+        </div>
+    </div>
+  </section >
+
+
+  <section id='cars' style="height:100vh;background-color:white;">
+    <div class="collection p-3">
+    <h1>Our New Collection</h1>
+    <h4>Discover 200+ Cars On Cars Heaven</h4>
+
+    <div class="row gap-5"style="margin-top:80px;">
+      {% for i in car %}
+    <div class="card" style="width: 430px;margin-left:100px">
+      <img src="{{i.image.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title fw-bold">{{i.title}}</h5>
+        <h6 class="card-title">price: {{i.price}} $</h6>
+        <h6 class="card-title">Brand : {{i.Brand.name}}</h6>
+        <a href="{% url 'car_details' i.id %}" class="btn btn-dark container">View Details</a>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+      </div>
+  </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

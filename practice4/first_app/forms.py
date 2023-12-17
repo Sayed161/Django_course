@@ -14,4 +14,5 @@ class LoginForm(forms.Form):
     today = forms.DateField(initial=datetime.date.today)
     choices = forms.ChoiceField(widget=forms.RadioSelect,choices=Data)
     password = forms.CharField(widget = forms.PasswordInput()) 
-    
+    BIRTH_YEAR_CHOICES = ['1980', '1981', '1982', '1983', '1984']
+    birth_year = forms.DateField(widget=forms.SelectDateWidget(years=BIRTH_YEAR_CHOICES))
