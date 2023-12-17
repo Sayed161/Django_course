@@ -8,8 +8,7 @@ class RegisterForm(UserCreationForm):
 
 
 class UserDataForm(UserChangeForm):
-    password1 = None
-    password2 = None
+    
     class Meta:
         model = User
         fields = ['username','first_name','last_name','email']

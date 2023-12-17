@@ -95,10 +95,10 @@ class LoginForm(LoginView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['type']= 'login'
+        context['type']= 'Login'
         return context
     
 class LogOutForm(LogoutView):
 
     def get_success_url(self) -> str:
-        return reverse_lazy('user_login')
+        return reverse_lazy('login')

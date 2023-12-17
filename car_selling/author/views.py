@@ -5,7 +5,8 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from car_model.models import Cars,Order
-
+from django.contrib.auth.views import LoginView,LogoutView
+from django.urls import reverse_lazy
 # Create your views here.
 def register(request):
     if not request.user.is_authenticated:
@@ -20,27 +21,33 @@ def register(request):
     else:
         return redirect('home')
 
-def user_login(request):
-    if not request.user.is_authenticated:
-        if request.method == 'POST':
-            user_login_form = AuthenticationForm(request=request,data=request.POST)
-            if user_login_form.is_valid():
-                user_name = user_login_form.cleaned_data['username']
-                user_pass = user_login_form.cleaned_data['password']
-                user = authenticate(username=user_name, password=user_pass)
-                if user is not None:
-                    login(request,user)
-                    return redirect('home')
-        else:
-            user_login_form = AuthenticationForm()
-        return render(request,'register.html',{'form':user_login_form,'type':'Login'})
-    else:
-        return redirect('home')
+    
+class LoginForm(LoginView):
+    template_name = 'register.html'
 
-@login_required
-def user_logout(request):
-    logout(request)
-    return redirect('login')
+    def get_success_url(self) -> str:
+        return reverse_lazy('profile')
+    
+
+    def form_valid(self, form):
+        messages.success(self.request, "Logged in successfully")
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.warning(self.request, "Logged information incorrect")
+        return super().form_invalid(form)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['type']= 'Login'
+        return context
+
+
+
+class LogOutForm(LogoutView):
+
+    def get_success_url(self) -> str:
+        return reverse_lazy('login')
 
 
 @login_required
