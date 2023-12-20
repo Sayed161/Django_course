@@ -3,6 +3,13 @@
 {% block content %}
 
 <form style="width:50%;margin:auto;margin-top:30px;color:white;border-box:1px" method='post'>
+
+    <div class="container me-5 mt-5">
+        {% for i in messages %}
+        <button class="btn btn-{{i.tags}} "style="margin:auto;width:50%">{{i}}</button>
+        {% endfor %}
+
+      </div>
     <h1 style="margin-left:380px">{{type}} Form</h1>
     {% csrf_token %}
     {{form|crispy}}

@@ -29,7 +29,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     purchasedate = models.DateTimeField(auto_now_add=True)
     already_purchased = models.BooleanField(default=False)
-    quantity_purchased = models.IntegerField(default=1)
+    quantity_purchased = models.IntegerField(default=0)
     
     def __str__(self) -> str:
         return f"{self.products.title} - {self.user.username}"

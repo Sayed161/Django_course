@@ -45,9 +45,11 @@ class LoginForm(LoginView):
 
 
 class LogOutForm(LogoutView):
-
     def get_success_url(self) -> str:
         return reverse_lazy('login')
+    def form_valid(self, form):
+        messages.success(self.request, "Logged Out successfully")
+        return super().form_valid(form)
 
 
 @login_required
